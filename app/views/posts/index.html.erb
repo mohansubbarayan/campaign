@@ -1,0 +1,64 @@
+
+<%= form_for(@post) do |f| %>
+  
+  
+  <div class="container">
+  
+  <div class="field1">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field2">
+    <%= f.label :budget %><br />
+    <%= f.text_field :budget %>
+  </div>
+  <div class="field3">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  
+  <div class="field4">
+    <label for="post_description">Description</label>
+    <br>
+    <textarea id="post_description" rows="5" name="post[description]" cols="25"></textarea>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+	</div>
+</div>
+<% end %>
+
+<div class="middle">
+<p style="margin-left:20px"> Sort by </p>
+<div class="adjust">
+<%= submit_tag "Budget", :type => 'button' %>
+<%= submit_tag "Title", :type => 'button' %>
+<input type="textbox" style="width:20px; margin-left:238px" value="" />
+<p style="margin-left:400px;margin-top:-20px">Show all ready commented</p>
+</div>
+</div>
+
+
+
+<div class="bottom">
+
+<% @posts.each do |post| %>
+<div class="align">
+
+
+<table border='1' style="margin-left:10px;margin-top:5px"><br />
+<tr>
+   <tr><td>Title:<%= post.title %></td></tr> 
+    <tr><td>Budget:<%= post.budget %></td></tr>
+    <tr><td>Price:<%= post.price %></td></tr>
+    <td><%= post.description %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  </table></div>
+<% end %>
+</div>
+
+
+
